@@ -1,0 +1,46 @@
+<?php
+$servername = "localhost"; 
+$username = "root"; 
+$password = "";
+$dbname = "my_data";
+
+// Create Connection
+$conn = mysqli_connect($servername, $username, $password=""); 
+
+// Check Connection
+if (!$conn) {
+	die("Connection failed: ".mysqli_connect_error()); 
+}
+
+// Create Database
+$sql = "CREATE DATABASE my_data (
+    no_pd INT(10) PRIMARY KEY ,
+    nama VARCHAR(30) NOT NULL, 
+    tmp_tgl VARCHAR DATE,
+    alamat VARCHAR(30) NOT NULL,
+    agama VARCHAR(5) NOT NULL,
+    jns_kel VARCHAR(5) NOT NULL,
+    status VARCHAR(5) NOT NULL,
+    kewarganegaraan VARCHAR(10) NOT NULL,
+    hobi VARCHAR(10) NOT NULL,
+    pekerjaan VARCHAR(15) NOT NULL,
+    kelurahan VARCHAR(15) NOT NULL,
+    kecamatan VARCHAR(15) NOT NULL,
+    kota_kab VARCHAR(10) NOT NULL,
+    provinsi VARCHAR(5) NOT NULL,
+    notelp VARCHAR(8) NOT NULL,
+    namsek VARCHAR(10) NOT NULL,
+    aslek VARCHAR(15) NOT NULL,
+    nonis VARCHAR(10) NOT NULL,
+    noser VARCHAR(15) NOT NULL
+    jur INT(5) PRIMARY KEY,
+    thnlus INT(5) PRIMARY KEY,
+     )";
+if (mysqli_query($conn, $sql)) {
+	echo "Database Created Successfully"; 
+} else {
+	echo "Database Creating Failed: ".mysqli_error($conn); 
+}
+
+mysqli_close($conn);
+?> 
